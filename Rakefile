@@ -195,7 +195,7 @@ task :stylesheets => :submodule do
     # Replace hard-coded image URLs with asset path helpers
     image_re = /url\("?images\/([-_.a-zA-Z0-9]+)"?\)/
     extname = source_code =~ image_re ? ".erb" : ""
-    source_code.gsub!(image_re, 'url(<%= image_path("jquery-ui/\1") %>)')
+    source_code.gsub!(image_re, 'url("jquery-ui/\1") %>)')
     File.open("#{target_ui_dir}/#{basename}#{extname}", "w") do |out|
       out.write(source_code)
     end
